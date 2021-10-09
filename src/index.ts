@@ -1,16 +1,14 @@
-import fastify, { FastifyInstance } from 'fastify';
-import { Server, IncomingMessage, ServerResponse } from 'http';
+import express from 'express';
+import cors from 'cors';
+import * as api from './api';
+import * as middleware from './middleware';
 
-interface R<P, D> {
-  params: P;
-  data: D;
-}
+const app = express();
 
-console.log(process.env.NODE_ENV);
-const server: FastifyInstance<Server, IncomingMessage, ServerResponse> = fastify({});
+app.use(cors({ origin: '*' }));
 
-server.get<{ Body: { t12: string }; Result: { tt: 232 } }>('/', {}, async (req, rep) => {
-  return 12;
-});
+app.use(express.json({ limit: '5mb' }));
+app.use(middleware.getLang);
+app.post('/api/v1/user/findfirst', api.user.findFirst.middleware, api.user.findFirst.handler);
 
-server.listen(3000, () => {});
+app.listen(3030);
