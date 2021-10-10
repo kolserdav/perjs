@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../epn"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
