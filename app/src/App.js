@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
-import * as utils from './utils';
+import * as api from './api/api';
 
 function App(args) {
   useEffect(() => {
@@ -8,7 +8,7 @@ function App(args) {
      * Учитывая что это не tsx файл то чтобы проверить типы
      * нужно вызвать исходник userFindFirst в низу api/api.ts
      */
-    utils.userFindFirst();
+    api.userFindFirst();
   }, []);
   return (
     <div className="App">
