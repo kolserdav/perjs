@@ -1,38 +1,23 @@
-import { useEffect } from 'react';
+import logo from './logo.svg';
 import './App.css';
-import * as api from './api/api';
 
-function App(args) {
-  useEffect(() => {
-    (async () => {
-      console.log(1);
-      const createRes = await api.create({
-        data: {
-          name: 'User 8',
-          role: 'admin',
-          email: 'test8@test.test',
-        },
-      });
-      /**
-       * Учитывая что это не tsx файл то чтобы проверить типы
-       * нужно вызвать исходник userFindFirst в низу api/api.ts
-       */
-      const result = await api.userFindFirst({
-        where: {
-          role: 'admin',
-        },
-        select: {
-          name: true,
-          id: true,
-        },
-      });
-      console.log('userFindFirst-result', result);
-      console.log('createUser-result', createRes);
-    })();
-  }, []);
+function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }
