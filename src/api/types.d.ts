@@ -6,9 +6,10 @@
  * License Text: Unauthorized copying of this file, via any medium is strictly prohibited
  * Copyright: kolserdav (c), All rights reserved
  * Create date: Mon Oct 11 2021 15:52:52 GMT+0700 (Krasnoyarsk Standard Time)
-****************************************************************/
+ ****************************************************************/
 /* eslint-disable no-unused-vars */
 import type * as E from 'express';
+import type { Locale } from '../locales/types';
 namespace Api {
   export type Status = 'error' | 'warning' | 'success';
 
@@ -22,10 +23,14 @@ namespace Api {
   }
 }
 
-export { Api };
+export { Api, E };
 
 interface ParamsDictionary {
   [key: string]: string;
+}
+
+export interface GlobalParams {
+  lang: Locale;
 }
 
 export interface RequestHandler<Query, Body, Response> {
